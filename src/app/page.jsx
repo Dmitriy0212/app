@@ -1,12 +1,24 @@
 "use client"
-import Link from 'next/link'
+import React, { useEffect, useState } from 'react';
+import UserAuth from './user/page'
 
-export default function Home() {
+export default function User() {
+  const [shou, setShou] = useState(false);
+  function clickHandlerClick() {
+    if (shou === true) {
+      setShou(false)
+    }
+    else {
+      setShou(true)
+    }
+  }
   return (
-
     <>
-      <Link href="/user">Панель управления</Link>
-      test
+      <button onClick={clickHandlerClick}>Войти</button>
+      {shou === true ?
+        <UserAuth func={clickHandlerClick} /> :
+        <></>
+      }
     </>
   );
 }
